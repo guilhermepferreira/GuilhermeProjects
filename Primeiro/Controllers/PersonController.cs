@@ -55,6 +55,7 @@ namespace Primeiro.Controllers
         {
             _personService.Delete(id);
             return NoContent();
+
         }
     }
 }
