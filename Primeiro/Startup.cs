@@ -1,17 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Primeiro.Services;
 using Primeiro.Services.Implementations;
+using Primeiro.Model.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Primeiro
 {
@@ -28,6 +23,10 @@ namespace Primeiro
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            //Database Connection
+            var connection = Configuration["MySQLConnection:MySQLConnectionString"];
+            services.AddDbContext<MySqlContext>(options => options.UseMySql(connection));
 
             //Dependency Injection
             services.AddScoped<IPersonService, PersonServiceImplementation>();
