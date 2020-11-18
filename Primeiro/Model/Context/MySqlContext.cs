@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Primeiro.Model.Context
 {
@@ -13,6 +14,17 @@ namespace Primeiro.Model.Context
         public DbSet<Person> Persons { get; set; }
 
         public DbSet<Book> Books { get; set; }
-        
+
+        public DbSet<User> Users { get; set; }
+
+        internal bool Any(Func<object, bool> p)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal object SingleOrDefault(Func<object, bool> p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
